@@ -20,8 +20,6 @@ import {
 } from "lucide-react";
 import { PROJECTS, BADGES, LEADERBOARD, SAMPLE_TASKS } from "@/lib/mockData";
 import { OnboardingData } from "@/lib/types";
-import { MessagesPanel } from "@/components/MessagesPanel";
-import { ProfileSection } from "@/components/ProfileSection";
 
 interface DashboardProps {
   userData: OnboardingData;
@@ -153,7 +151,6 @@ const Dashboard = ({ userData, onStartProject }: DashboardProps) => {
           <TabsList className="glass">
             <TabsTrigger value="projects">Projects</TabsTrigger>
             <TabsTrigger value="tasks">Tasks</TabsTrigger>
-            <TabsTrigger value="messages">Messages</TabsTrigger>
             <TabsTrigger value="achievements">Achievements</TabsTrigger>
             <TabsTrigger value="leaderboard">Leaderboard</TabsTrigger>
             <TabsTrigger value="profile">Profile</TabsTrigger>
@@ -294,13 +291,6 @@ const Dashboard = ({ userData, onStartProject }: DashboardProps) => {
             </Card>
           </TabsContent>
 
-          {/* Messages Tab */}
-          <TabsContent value="messages">
-            <Card className="glass h-[600px] flex flex-col">
-              <MessagesPanel />
-            </Card>
-          </TabsContent>
-
           {/* Achievements Tab */}
           <TabsContent value="achievements">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -361,7 +351,47 @@ const Dashboard = ({ userData, onStartProject }: DashboardProps) => {
 
           {/* Profile Tab */}
           <TabsContent value="profile">
-            <ProfileSection userData={userData} />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <Card className="glass">
+                <CardHeader>
+                  <CardTitle>Profile Information</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Experience Level:</span>
+                    <span className="font-semibold">{userData.profile.experience}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Weekly Hours:</span>
+                    <span className="font-semibold">{userData.profile.weeklyHours}h</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Skills:</span>
+                    <span className="font-semibold">{userData.skills.length} selected</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Timezone:</span>
+                    <span className="font-semibold">{userData.profile.timezone}</span>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="glass">
+                <CardHeader>
+                  <CardTitle>Your Skills</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-2 gap-3">
+                    {userData.skills.map((skill, index) => (
+                      <div key={index} className="p-3 rounded-lg bg-muted/20">
+                        <div className="text-sm font-semibold">Skill {skill.skillId}</div>
+                        <div className="text-xs text-muted-foreground">Level {skill.level}</div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </TabsContent>
         </Tabs>
       </div>

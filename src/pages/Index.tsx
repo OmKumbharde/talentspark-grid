@@ -23,7 +23,7 @@ import StatsSection from "@/components/StatsSection";
 import CTASection from "@/components/CTASection";
 import OnboardingFlow from "@/components/OnboardingFlow";
 import Dashboard from "@/components/Dashboard";
-import { WorkspaceLayout } from "@/components/WorkspaceLayout";
+import WorkspacePreview from "@/components/WorkspacePreview";
 import { OnboardingData } from "@/lib/types";
 
 const Index = () => {
@@ -59,7 +59,7 @@ const Index = () => {
   }
 
   if (currentView === 'workspace' && currentProjectId) {
-    return <WorkspaceLayout projectId={currentProjectId} onBackToDashboard={handleBackToDashboard} />;
+    return <WorkspacePreview projectId={currentProjectId} onBack={handleBackToDashboard} />;
   }
 
   return (
