@@ -110,7 +110,7 @@
   }
 
   .hover-lift {
-    @apply transition-smooth hover:scale-[1.02] hover:shadow-elevated;
+    @apply transition-smooth hover:scale-[1.02] hover:card-elevated;
   }
 
   .text-gradient {
