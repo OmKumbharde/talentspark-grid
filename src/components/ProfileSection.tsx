@@ -62,7 +62,6 @@ export default function ProfileSection() {
   };
 
   const handleSave = () => {
-    // Mock save functionality
     updateUser({ 
       name: formData.name, 
       email: formData.email 

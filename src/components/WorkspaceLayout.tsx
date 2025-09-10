@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { ArrowLeft, Play, MessageCircle, Users, CheckCircle, Clock, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, Play, MessageCircle, CheckCircle, Clock, AlertTriangle } from 'lucide-react';
 
 interface WorkspaceLayoutProps {
   projectId: string;
@@ -30,14 +30,6 @@ export default function WorkspaceLayout({ onBack }: WorkspaceLayoutProps) {
       { id: '4', title: 'Add animations', status: 'todo', points: 5 },
       { id: '5', title: 'Deploy to production', status: 'todo', points: 3 }
     ]
-  };
-
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case 'done': return <CheckCircle className="h-4 w-4 text-green-500" />;
-      case 'in_progress': return <Clock className="h-4 w-4 text-yellow-500" />;
-      default: return <AlertTriangle className="h-4 w-4 text-gray-400" />;
-    }
   };
 
   return (
@@ -85,7 +77,7 @@ export default function WorkspaceLayout({ onBack }: WorkspaceLayoutProps) {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <AlertTriangle className="h-5 w-5 text-gray-400" />
+                    <AlertTriangle className="h-5 w-5 text-muted-foreground" />
                     Todo
                   </CardTitle>
                 </CardHeader>
